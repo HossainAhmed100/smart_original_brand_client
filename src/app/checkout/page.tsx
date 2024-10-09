@@ -10,6 +10,7 @@ import { useCart } from '@/context/CartContext'
 import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query'
 import useAxiosPublic from '@/hooks/useAxiosPublic'
+import toast from 'react-hot-toast'
 
 const Checkout = () => {
     const searchParams = useSearchParams()
@@ -45,7 +46,7 @@ const Checkout = () => {
         const deliveryChargeDetails = deliveryCharge;
         const myCart = cartState.cartArray;
         const info = {fullName, phone, address, deliveryNotes, status, deliveryChargeDetails, myCart};
-        console.log(info)
+        toast.error("This Function is Under Construction")
     }   
 
     return (

@@ -30,9 +30,8 @@ export default function Home() {
       </div>
       <TrendingNow />
       <Deal data={productData} start={4} limit={8} />
-      <WhatNewOne data={productData} start={0} limit={4} />
+      <WhatNewOne start={0} limit={4} />
       <Collection />
-      <TabFeatures data={productData} start={0} limit={6} />
       <FlashSale />
       <Banner />
       <MenFashion data={productData} start={0} limit={3} />

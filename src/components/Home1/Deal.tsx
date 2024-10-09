@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Product from '../Product/Product'
 import { ProductType } from '@/type/ProductType'
 import { countdownTime } from '@/store/countdownTime'
+import useProduct from '@/hooks/useProduct';
 
 interface Props {
     data: Array<ProductType>;
@@ -14,6 +15,8 @@ interface Props {
 
 const Deal: React.FC<Props> = ({ data, start, limit }) => {
     const [timeLeft, setTimeLeft] = useState(countdownTime());
+
+    const [products, isLoading] = useProduct();
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -47,7 +50,7 @@ const Deal: React.FC<Props> = ({ data, start, limit }) => {
                     </div>
 
                     <div className="list-product show-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
-                        {data.slice(start, limit).map((prd, index) => (
+                        {products.slice(start, limit).map((prd, index) => (
                             <Product key={index} data={prd} type='grid' />
                         ))}
                     </div>

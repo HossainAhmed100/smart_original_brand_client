@@ -163,12 +163,14 @@ const ShopFilterCanvas: React.FC<Props> = ({ data, productPerPage, dataType }) =
             quantity: 0,
             quantityPurchase: 0,
             sizes: [],
+            tag: [],
             variation: [],
             thumbImage: [],
             images: [],
             description: 'no-data',
             action: 'no-data',
-            slug: 'no-data'
+            slug: 'no-data',
+            sku: 'no-data',
         }];
     }
 

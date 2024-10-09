@@ -20,19 +20,19 @@ const serverTimeLeft: CountdownTimeType = countdownTime();
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
+  <GlobalProvider>
     <html lang="en">
-        <body>
-          <Providers>
-        <GlobalProvider>
-        {children}
+      <body>
+        <Providers>
+          {children}
           <ModalCart serverTimeLeft={serverTimeLeft} />
           <ModalWishlist />
           <ModalSearch />
           <ModalQuickview />
           <ModalCompare />
-        </GlobalProvider>
         </Providers>
-        </body>
-      </html>
+      </body>
+    </html>
+  </GlobalProvider>
   )
 }

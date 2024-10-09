@@ -8,12 +8,11 @@ import useProduct from '@/hooks/useProduct'
 import Loading from '../Other/Loading'
 
 interface Props {
-  data: Array<ProductType>;
   start: number;
   limit: number;
 }
 
-const WhatNewOne: React.FC<Props> = ({ data, start, limit }) => {
+const WhatNewOne: React.FC<Props> = ({ start, limit }) => {
   const [activeTab, setActiveTab] = useState<string>('t-shirt');
   const [products, isLoading] = useProduct();
 
@@ -22,9 +21,7 @@ const WhatNewOne: React.FC<Props> = ({ data, start, limit }) => {
   };
 
   // Explicitly define product type in filter function
-  const filteredProducts = products.filter((product: ProductType) => 
-    product.category === activeTab && product.category === 't-shirt'
-  );
+  const filteredProducts = products.filter((product: ProductType) => product.category === activeTab);
   return (
     <>
       <div className="whate-new-block md:pt-20 pt-10">
@@ -48,9 +45,9 @@ const WhatNewOne: React.FC<Props> = ({ data, start, limit }) => {
               ))}
             </div>
           </div>
-              {
-                isLoading && <Loading />
-              }
+          <div className='w-full flex items-center justify-center'>
+          {isLoading && <Loading />}
+          </div>
           <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
             {filteredProducts.slice(start, limit).map((prd: ProductType, index: number) => (
               <Product data={prd} type='grid' key={index} />

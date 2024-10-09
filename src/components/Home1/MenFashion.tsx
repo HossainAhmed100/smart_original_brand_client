@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Product from '../Product/Product'
 import { ProductType } from '@/type/ProductType'
 import { motion } from 'framer-motion'
+import useProduct from '@/hooks/useProduct';
 
 interface Props {
     data: Array<ProductType>;
@@ -14,13 +15,14 @@ interface Props {
 }
 
 const MenFashion: React.FC<Props> = ({ data, start, limit }) => {
-    const [activeTab, setActiveTab] = useState<string>('shirt');
+    const [activeTab, setActiveTab] = useState<string>('t-shirt');
+    const [products, isLoading] = useProduct();
 
     const handleTabClick = (type: string) => {
         setActiveTab(type);
     };
 
-    const filteredProducts = data.filter((product) => product.type === activeTab && product.gender === 'men' && product.category === 'fashion');
+    const filteredProducts = products.filter((product: ProductType) => product.category === activeTab);
 
     return (
         <>
@@ -29,7 +31,7 @@ const MenFashion: React.FC<Props> = ({ data, start, limit }) => {
                     <div className="heading flex items-center justify-between gap-5 flex-wrap">
                         <div className="heading3">men{String.raw`'s`} Fashion</div>
                         <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl">
-                            {['t-shirt', 'shirt', 'sweater', 'outerwear'].map((type) => (
+                            {['t-shirt', 'wallet', 'jacket', 'hoodie'].map((type) => (
                                 <div
                                     key={type}
                                     className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-black ${activeTab === type ? 'active' : ''}`}
