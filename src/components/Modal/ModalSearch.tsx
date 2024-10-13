@@ -48,27 +48,27 @@ const ModalSearch = () => {
                         <div className="list-keyword flex items-center flex-wrap gap-3 mt-4">
                             <div
                                 className="item px-4 py-1.5 border border-line rounded-full cursor-pointer duration-300 hover:bg-black hover:text-white"
-                                onClick={() => handleSearch('dress')}
-                            >
-                                Dress
-                            </div>
-                            <div
-                                className="item px-4 py-1.5 border border-line rounded-full cursor-pointer duration-300 hover:bg-black hover:text-white"
                                 onClick={() => handleSearch('t-shirt')}
                             >
-                                T-shirt
+                                T-Shirt
                             </div>
                             <div
                                 className="item px-4 py-1.5 border border-line rounded-full cursor-pointer duration-300 hover:bg-black hover:text-white"
-                                onClick={() => handleSearch('underwear')}
+                                onClick={() => handleSearch('Wallet')}
                             >
-                                Underwear
+                                Wallet
                             </div>
                             <div
                                 className="item px-4 py-1.5 border border-line rounded-full cursor-pointer duration-300 hover:bg-black hover:text-white"
-                                onClick={() => handleSearch('top')}
+                                onClick={() => handleSearch('jacket')}
                             >
-                                Top
+                                Jacket
+                            </div>
+                            <div
+                                className="item px-4 py-1.5 border border-line rounded-full cursor-pointer duration-300 hover:bg-black hover:text-white"
+                                onClick={() => handleSearch('hoodie')}
+                            >
+                                Hoodie
                             </div>
                         </div>
                     </div>

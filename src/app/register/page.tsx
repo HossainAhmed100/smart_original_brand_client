@@ -51,7 +51,7 @@ const Register = () => {
                                     <Link href={'/forgot-password'} className='font-semibold hover:underline'>Forgot Your Password?</Link>
                                 </div>
                                 <div className="block-button md:mt-7 mt-4">
-                                    <button onClick={handleLogin} className="button-main">Register now</button>
+                                    <button onClick={handleLogin} className="button-main bg-[#fc8934]">Register now</button>
                                 </div>
                             </form>
                         </div>
@@ -60,7 +60,7 @@ const Register = () => {
                                 <div className="heading4">Already have an account?</div>
                                 <div className="mt-2 text-secondary">Welcome back. Sign in to access your personalized experience, saved preferences, and more. We{String.raw`'re`} thrilled to have you with us again!</div>
                                 <div className="block-button md:mt-7 mt-4">
-                                    <Link href={'/login'} className="button-main">Login</Link>
+                                    <Link href={'/login'} className="button-main bg-[#fc8934]">Login</Link>
                                 </div>
                             </div>
                         </div>

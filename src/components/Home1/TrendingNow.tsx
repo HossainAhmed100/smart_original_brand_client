@@ -7,10 +7,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
 import { useRouter } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
 
 
 const TrendingNow = () => {
     const router = useRouter()
+    const axiosPublic = useAxiosPublic();
+    const {data: categoryInfo = []} = useQuery({
+        queryKey: ["categoryInfo"],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/layout/category/');
+            return res.data;
+        },
+        })
 
     const handleTypeClick = (type: string) => {
         router.push(`/shop/breadcrumb1?type=${type}`);
@@ -49,108 +59,28 @@ const TrendingNow = () => {
                             }}
                             className='h-full'
                         >
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('t-shirt')}>
+                            
+                            {
+                                categoryInfo.map((item: any) => (
+                            <SwiperSlide key={item._id}>
+                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick(item.path)}>
                                     <div className="bg-img rounded-2xl overflow-hidden">
                                         <Image
-                                            src={'https://i.ibb.co.com/h7VCXSh/1.jpg'}
+                                            src={item.imgUrl}
                                             width={1000}
                                             height={1000}
-                                            alt='outerwear'
+                                            alt={item.path}
                                             priority={true}
                                             className='w-full'
                                         />
                                     </div>
                                     <div className="trending-name bg-white absolute bottom-5 left-1/2 -translate-x-1/2 w-[140px] h-10 rounded-xl flex items-center justify-center duration-500 hover:bg-black hover:text-white">
-                                        <span className='heading6'>t-shirt</span>
+                                        <span className='heading6'>{item.label}</span>
                                     </div>
                                 </div>
                             </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('jacket')}>
-                                    <div className="bg-img rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={'https://i.ibb.co.com/Tgp8JTf/4.jpg'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='clothes'
-                                            priority={true}
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name bg-white absolute bottom-5 left-1/2 -translate-x-1/2 w-[140px] h-10 rounded-xl flex items-center justify-center duration-500 hover:bg-black hover:text-white">
-                                        <span className='heading6'>jacket</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('hoodei')}>
-                                    <div className="bg-img rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={'https://i.ibb.co.com/WtsxCqJ/5.jpg'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='sets'
-                                            priority={true}
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name bg-white absolute bottom-5 left-1/2 -translate-x-1/2 w-[140px] h-10 rounded-xl flex items-center justify-center duration-500 hover:bg-black hover:text-white">
-                                        <span className='heading6'>hoodei</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('belt')}>
-                                    <div className="bg-img rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={'https://i.ibb.co.com/tQ6gKrw/6.jpg'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='accessories'
-                                            priority={true}
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name bg-white absolute bottom-5 left-1/2 -translate-x-1/2 w-[140px] h-10 rounded-xl flex items-center justify-center duration-500 hover:bg-black hover:text-white">
-                                        <span className='heading6'>belt</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('wallet')}>
-                                    <div className="bg-img rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={'https://i.ibb.co.com/xJhqQXB/7.jpg'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='lingerie'
-                                            priority={true}
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name bg-white absolute bottom-5 left-1/2 -translate-x-1/2 w-[140px] h-10 rounded-xl flex items-center justify-center duration-500 hover:bg-black hover:text-white">
-                                        <span className='heading6'>wallet</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('panjabi')}>
-                                    <div className="bg-img rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={'https://i.ibb.co.com/vmH9Jqd/8.jpg'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='lingerie'
-                                            priority={true}
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name bg-white absolute bottom-5 left-1/2 -translate-x-1/2 w-[140px] h-10 rounded-xl flex items-center justify-center duration-500 hover:bg-black hover:text-white">
-                                        <span className='heading6'>panjabi</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
+                                ))
+                            }
                         </Swiper>
                     </div>
                 </div>

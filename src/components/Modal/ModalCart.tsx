@@ -131,7 +131,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                     <div className="flex items-center gap-4">
                         <Link
                             href={'/checkout'}
-                            className='button-main w-full text-center uppercase'
+                            className='button-main bg-[#fc8934] w-full text-center uppercase'
                             onClick={closeModalCart}
                         >
                             আপনার অর্ডার কনফার্ম করতে ক্লিক করুন

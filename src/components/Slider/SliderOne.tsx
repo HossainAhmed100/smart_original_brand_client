@@ -35,7 +35,7 @@ const SliderOne = () => {
                                     </div>
                                     <div className="sub-img absolute sm:w-1/2 w-3/5 2xl:-right-[60px] -right-[16px] bottom-0">
                                         <Image
-                                            src={'/images/slider/bg1-1.png'}
+                                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fbg1-3.png?alt=media&token=dbf84706-7c1b-484c-b4fa-bd725720aa40'}
                                             width={670}
                                             height={936}
                                             alt='bg1-1'
@@ -55,7 +55,7 @@ const SliderOne = () => {
                                     </div>
                                     <div className="sub-img absolute w-1/2 2xl:-right-[60px] -right-[0] sm:-bottom-[60px] bottom-0">
                                         <Image
-                                            src={'/images/slider/bg1-2.png'}
+                                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fbg1-2.png?alt=media&token=0e797158-276b-4581-974a-68b2da5c9ba1'}
                                             width={670}
                                             height={936}
                                             alt='bg1-2'
@@ -75,7 +75,7 @@ const SliderOne = () => {
                                     </div>
                                     <div className="sub-img absolute sm:w-1/2 w-2/3 2xl:-right-[60px] -right-[36px] sm:bottom-0 -bottom-[30px]">
                                         <Image
-                                            src={'/images/slider/bg1-3.png'}
+                                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fbg1-1.png?alt=media&token=947bc5bc-e4e6-4ad1-965f-a9ea0209413e'}
                                             width={670}
                                             height={936}
                                             alt='bg1-3'

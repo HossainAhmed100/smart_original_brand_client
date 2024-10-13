@@ -205,7 +205,7 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
         setSize(null);
         setColor(null);
         setBrand(null);
-        setPriceRange({ min: 0, max: 100 });
+        setPriceRange({ min: 0, max: 20000 });
         setCurrentPage(0);
         handleType(null)
     };
@@ -225,7 +225,7 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
                                 </div>
                             </div>
                             <div className="list-tab flex flex-wrap items-center justify-center gap-y-5 gap-8 lg:mt-[70px] mt-12 overflow-hidden">
-                                {['t-shirt', 'dress', 'top', 'swimwear', 'shirt'].map((item, index) => (
+                                {['t-shirt', 'wallet', 'jacket', 'belt', 'hoodie'].map((item, index) => (
                                     <div
                                         key={index}
                                         className={`tab-item text-button-uppercase cursor-pointer has-line-before line-2px ${dataType === item ? 'active' : ''}`}
@@ -255,7 +255,7 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
                                         >
                                             <div className='text-secondary has-line-before hover:text-black capitalize'>{item}</div>
                                             <div className='text-secondary2'>
-                                                ({data.filter(dataItem => dataItem.type === item && dataItem.category === 'fashion').length})
+                                                ({data.filter(dataItem => dataItem.category === item).length})
                                             </div>
                                         </div>
                                     ))}
@@ -308,60 +308,6 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
                                     </div>
                                 </div>
                             </div>
-                            <div className="filter-color pb-8 border-b border-line mt-8">
-                                <div className="heading6">colors</div>
-                                <div className="list-color flex items-center flex-wrap gap-3 gap-y-4 mt-4">
-                                    <div
-                                        className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${color === 'pink' ? 'active' : ''}`}
-                                        onClick={() => handleColor('pink')}
-                                    >
-                                        <div className="color bg-[#F4C5BF] w-5 h-5 rounded-full"></div>
-                                        <div className="caption1 capitalize">pink</div>
-                                    </div>
-                                    <div
-                                        className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${color === 'red' ? 'active' : ''}`}
-                                        onClick={() => handleColor('red')}
-                                    >
-                                        <div className="color bg-red w-5 h-5 rounded-full"></div>
-                                        <div className="caption1 capitalize">red</div>
-                                    </div>
-                                    <div
-                                        className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${color === 'green' ? 'active' : ''}`}
-                                        onClick={() => handleColor('green')}
-                                    >
-                                        <div className="color bg-green w-5 h-5 rounded-full"></div>
-                                        <div className="caption1 capitalize">green</div>
-                                    </div>
-                                    <div
-                                        className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${color === 'yellow' ? 'active' : ''}`}
-                                        onClick={() => handleColor('yellow')}
-                                    >
-                                        <div className="color bg-yellow w-5 h-5 rounded-full"></div>
-                                        <div className="caption1 capitalize">yellow</div>
-                                    </div>
-                                    <div
-                                        className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${color === 'purple' ? 'active' : ''}`}
-                                        onClick={() => handleColor('purple')}
-                                    >
-                                        <div className="color bg-purple w-5 h-5 rounded-full"></div>
-                                        <div className="caption1 capitalize">purple</div>
-                                    </div>
-                                    <div
-                                        className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${color === 'black' ? 'active' : ''}`}
-                                        onClick={() => handleColor('black')}
-                                    >
-                                        <div className="color bg-black w-5 h-5 rounded-full"></div>
-                                        <div className="caption1 capitalize">black</div>
-                                    </div>
-                                    <div
-                                        className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${color === 'white' ? 'active' : ''}`}
-                                        onClick={() => handleColor('white')}
-                                    >
-                                        <div className="color bg-[#F6EFDD] w-5 h-5 rounded-full"></div>
-                                        <div className="caption1 capitalize">white</div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div className="list-product-block lg:w-3/4 md:w-2/3 w-full md:pl-3">
                             <div className="filter-heading flex items-center justify-between gap-5 flex-wrap">
@@ -374,13 +320,6 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
                                                 <span className='w-[3px] h-4 bg-secondary2 rounded-sm'></span>
                                             </div>
                                         </div>
-                                        <Link href={'/shop/sidebar-list'} className="item row w-8 h-8 border border-line rounded flex items-center justify-center cursor-pointer">
-                                            <div className='flex flex-col items-center gap-0.5'>
-                                                <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
-                                                <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
-                                                <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
-                                            </div>
-                                        </Link>
                                     </div>
                                     <div className="check-sale flex items-center gap-2">
                                         <input

@@ -51,7 +51,7 @@ const Login = () => {
                                     <Link href={'/forgot-password'} className='font-semibold hover:underline'>Forgot Your Password?</Link>
                                 </div>
                                 <div className="block-button md:mt-7 mt-4">
-                                    <button onClick={handleLogin} className="button-main">Login</button>
+                                    <button onClick={handleLogin} className="button-main bg-[#fc8934]">Login</button>
                                 </div>
                             </form>
                         </div>
@@ -60,7 +60,7 @@ const Login = () => {
                                 <div className="heading4">New Customer</div>
                                 <div className="mt-2 text-secondary">Be part of our growing family of new customers! Join us today and unlock a world of exclusive benefits, offers, and personalized experiences.</div>
                                 <div className="block-button md:mt-7 mt-4">
-                                    <Link href={'/register'} className="button-main">Register</Link>
+                                    <Link href={'/register'} className="button-main bg-[#fc8934]">Register</Link>
                                 </div>
                             </div>
                         </div>

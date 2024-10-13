@@ -27,7 +27,7 @@ const ForgotPassword = () => {
                                     <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="username" type="email" placeholder="Username or email address *" required  />
                                 </div>
                                 <div className="block-button md:mt-7 mt-4">
-                                    <button className="button-main">Submit</button>
+                                    <button className="button-main bg-[#fc8934]">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -36,7 +36,7 @@ const ForgotPassword = () => {
                                 <div className="heading4">New Customer</div>
                                 <div className="mt-2 text-secondary">Be part of our growing family of new customers! Join us today and unlock a world of exclusive benefits, offers, and personalized experiences.</div>
                                 <div className="block-button md:mt-7 mt-4">
-                                    <Link href={'/register'} className="button-main">Register</Link>
+                                    <Link href={'/register'} className="button-main bg-[#fc8934]">Register</Link>
                                 </div>
                             </div>
                         </div>

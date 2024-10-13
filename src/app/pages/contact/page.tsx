@@ -32,22 +32,16 @@ const ContactUs = () => {
                                     </div>
                                 </div>
                                 <div className="block-button md:mt-6 mt-4">
-                                    <button className="button-main">Send message</button>
+                                    <button className="button-main bg-[#fc8934]">Send message</button>
                                 </div>
                             </form>
                         </div>
                         <div className="right lg:w-1/4 lg:pl-4">
                             <div className="item">
                                 <div className="heading4">Our Store</div>
-                                <p className="mt-3">Fulbaria Super Market, City PLaza, Block#A (Ground Floor),shop#88, Dhaka, Bangladesh</p>
-                                <p className="mt-3">Phone: <span className='whitespace-nowrap'>+88019-758-592-49</span></p>
-                                <p className="mt-1">Email: <span className='whitespace-nowrap'>hi.smartOriginal@gmail.com</span></p>
-                            </div>
-                            <div className="item mt-10">
-                                <div className="heading4">Open Hours</div>
-                                <p className="mt-3">Mon - Fri: <span className='whitespace-nowrap'>7:30am - 8:00pm PST</span></p>
-                                <p className="mt-3">Saturday: <span className='whitespace-nowrap'>8:00am - 6:00pm PST</span></p>
-                                <p className="mt-3">Sunday: <span className='whitespace-nowrap'>9:00am - 5:00pm PST</span></p>
+                                <p className="mt-3">Block #E, Holding #365/1, West Saheb Para, Mizmizi, Siddirganj, Narayanganj</p>
+                                <p className="mt-3">Phone: <span className='whitespace-nowrap'>+880 1975-859249</span></p>
+                                <p className="mt-1">Email: <span className='whitespace-nowrap'>smartbd1425@gmail.com</span></p>
                             </div>
                         </div>
                     </div>

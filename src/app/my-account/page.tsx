@@ -32,7 +32,7 @@ const MyAccount = () => {
                                             className='md:w-[140px] w-[120px] md:h-[140px] h-[120px] rounded-full'
                                         />
                                     </div>
-                                    <div className="name heading6 mt-4 text-center">Tony Nguyen</div>
+                                    <div className="name heading6 mt-4 text-center">Hossain Ahmed</div>
                                     <div className="mail heading6 font-normal normal-case text-center mt-1">hi.avitex@gmail.com</div>
                                 </div>
                                 <div className="menu-tab lg:mt-10 mt-6">
@@ -61,22 +61,19 @@ const MyAccount = () => {
                                     <div className="heading5 pb-4">Information</div>
                                     <div className='grid sm:grid-cols-2 gap-4 gap-y-5'>
                                         <div className="first-name ">
-                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="firstName" type="text" defaultValue={'Tony'} placeholder='First name' required />
-                                        </div>
-                                        <div className="last-name">
-                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="lastName" type="text" defaultValue={'Nguyen'} placeholder='Last name' required />
+                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="fullnAME" type="text" defaultValue={'Hossain Ahmed'} placeholder='First name' required />
                                         </div>
                                         <div className="email ">
-                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="email" type="email" defaultValue={'hi.avitex@gmail.com'} placeholder="Email address" required />
+                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="email" type="email" defaultValue={'hi.hossain@gmail.com'} placeholder="Email address" required />
                                         </div>
                                         <div className="phone-number">
-                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="phoneNumber" type="text" defaultValue={'(+12) 345 678 910'} placeholder="Phone number" required />
+                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="phoneNumber" type="text" defaultValue={'(+880) 1322 3600 98'} placeholder="Phone number" required />
                                         </div>
                                         <div className="col-span-full select-block">
                                             <select className="border border-line px-4 py-3 w-full rounded-lg" id="region" name="region" defaultValue={'default'}>
                                                 <option value="default" disabled>Choose Country/Region</option>
+                                                <option value="Bangladesh">Bangladesh</option>
                                                 <option value="India">India</option>
-                                                <option value="France">France</option>
                                                 <option value="Singapore">Singapore</option>
                                             </select>
                                             <Icon.CaretDown className='arrow-down' />
@@ -93,7 +90,7 @@ const MyAccount = () => {
                                         <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="confirmPassword" type="password" placeholder="Confirm Password *" required />
                                     </div>
                                     <div className="block-button lg:mt-10 mt-6">
-                                        <button className="button-main">Update Account</button>
+                                        <button className="button-main bg-[#fc8934]">Update Account</button>
                                     </div>
                                 </form>
                             </div>

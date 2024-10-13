@@ -16,6 +16,7 @@ import { useModalWishlistContext } from '@/context/ModalWishlistContext'
 import ModalSizeguide from '@/components/Modal/ModalSizeguide'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosPublic from '@/hooks/useAxiosPublic'
+import { useRouter } from 'next/navigation'
 
 SwiperCore.use([Navigation, Thumbs]);
 
@@ -36,6 +37,7 @@ const Default: React.FC<Props> = ({ productId }) => {
     const { addToWishlist, removeFromWishlist, wishlistState } = useWishlist()
     const { openModalWishlist } = useModalWishlistContext()
     const axiosPublic = useAxiosPublic();
+    const router = useRouter();
 
     // Fetching the product data using useQuery
     const { data: productMain, isLoading } = useQuery<ProductType>({
@@ -118,6 +120,19 @@ const Default: React.FC<Props> = ({ productId }) => {
             updateCart(productMain._id, productMain.quantityPurchase, activeSize, activeColor)
         }
         openModalCart()
+    };
+
+    const handleBuyNow = () => {
+        
+        if (!cartState.cartArray.find(item => item._id === productMain._id)) {
+            addToCart({ ...productMain });
+            updateCart(productMain._id, productMain.quantityPurchase, activeSize, activeColor)
+        } else {
+            updateCart(productMain._id, productMain.quantityPurchase, activeSize, activeColor)
+        }
+        openModalCart()
+        router.push("/")
+        
     };
 
     const handleAddToWishlist = () => {
@@ -264,11 +279,10 @@ const Default: React.FC<Props> = ({ productId }) => {
                                 <div className='w-px h-4 bg-line'></div>
                                 <div className="product-origin-price font-normal text-secondary2"><del>৳{productMain.originPrice}.00</del></div>
                                 {productMain.originPrice && (
-                                    <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
+                                    <div className="product-sale caption2 font-semibold bg-[#fc8934] px-3 py-0.5 inline-block rounded-full">
                                         -{percentSale}%
                                     </div>
                                 )}
-                                <div className='desc text-secondary mt-3'>{productMain.description}</div>
                             </div>
                             <div className="list-action mt-6">
                                 <div className="choose-color mt-5">
@@ -332,12 +346,23 @@ const Default: React.FC<Props> = ({ productId }) => {
                                             className='cursor-pointer'
                                         />
                                     </div>
-                                    <div onClick={handleAddToCart} className="button-main w-full text-center bg-white text-black border border-black">Add To Cart</div>
+                                    <div onClick={handleAddToCart} className="button-main w-full text-center bg-black text-white border border-black">Add To Cart</div>
                                 </div>
                                 <div className="button-block mt-5">
-                                    <div className="button-main w-full text-center">Buy It Now</div>
+                                    <div onClick={handleAddToCart} className="button-main bg-[#fc8934] w-full text-center">Buy It Now</div>
                                 </div>
-                                
+                                <div className="">
+                                    <div className="more-infor">
+                                    <div className="flex items-center gap-1 mt-3">
+                                        <div className="text-title">SKU:</div>
+                                        <div className="text-secondary">{productMain.sku}</div>
+                                    </div>
+                                    <div className="flex items-center gap-1 mt-3">
+                                        <div className="text-title">Categories:</div>
+                                        <div className="text-secondary capitalize">{productMain.category}, {productMain.gender}, {productMain.type}</div>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -349,41 +374,11 @@ const Default: React.FC<Props> = ({ productId }) => {
                                 <div className='grid md:grid-cols-2 gap-8 gap-y-5'>
                                     <div className="left">
                                         <div className="heading6">Description</div>
-                                        <div className="text-secondary mt-2">
+                                        <pre className="text-secondary mt-2">
                                         {productMain.description}
-                                        </div>
+                                        </pre>
                                     </div>
-                                    <div className="right">
-                                        <div className="more-infor">
-                                        <div className="flex heading6 items-center gap-4 flex-wrap">
-                                            <div className="flex items-center gap-1">
-                                                <Icon.ArrowClockwise className='body1' />
-                                                <div className="text-title">Delivery & Return</div>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <Icon.Question className='body1' />
-                                                <div className="text-title">Ask A Question</div>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-1 mt-3">
-                                            <Icon.Eye className='body1' />
-                                            <div className="text-title">38</div>
-                                            <div className="text-secondary">people viewing this product right now!</div>
-                                        </div>
-                                        <div className="flex items-center gap-1 mt-3">
-                                            <div className="text-title">SKU:</div>
-                                            <div className="text-secondary">{productMain.sku}</div>
-                                        </div>
-                                        <div className="flex items-center gap-1 mt-3">
-                                            <div className="text-title">Categories:</div>
-                                            <div className="text-secondary">{productMain.category}, {productMain.gender}</div>
-                                        </div>
-                                        <div className="flex items-center gap-1 mt-3">
-                                            <div className="text-title">Tag:</div>
-                                            <div className="text-secondary">{productMain.tag.map(convertedTag).join(', ')}</div>
-                                        </div>
-                                    </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

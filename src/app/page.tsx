@@ -23,7 +23,7 @@ import Deal from '@/components/Home1/Deal'
 export default function Home() {
   return (
     <>
-      <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
+      <TopNavOne props="style-one" slogan="আমাদের যে কোন পণ্য অর্ডার করতে কল বা WhatsApp করুন: +880 1975-859249" />
       <div id="header" className='relative w-full'>
         <MenuOne props="bg-transparent" />
         <SliderOne />
@@ -32,15 +32,9 @@ export default function Home() {
       <Deal data={productData} start={4} limit={8} />
       <WhatNewOne start={0} limit={4} />
       <Collection />
-      <FlashSale />
-      <Banner />
       <MenFashion data={productData} start={0} limit={3} />
-      <SliderEleven />
       <WomenFashion data={productData} start={0} limit={3} />
-      <Benefit props="md:py-20 py-10" />
-      <Testimonial data={testimonialData} limit={6} />
       <Instagram />
-      <Brand />
       <Footer />
     </>
   )
