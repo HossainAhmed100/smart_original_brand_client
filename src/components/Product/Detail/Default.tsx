@@ -314,6 +314,9 @@ const Default: React.FC<Props> = ({ productId }) => {
                                     </div>
                                 </div>
                                 <div className="choose-size mt-5">
+                                    <div>
+                                    {productMain.sizeGuide !== "none" && <div className="mt-2 border-2"><Image alt='Product Size Guide' src={productMain?.sizeGuide} width={1000} height={1000}/></div>}
+                                    </div>
                                     <div className="heading flex items-center justify-between">
                                         <div className="text-title">Size: <span className='text-title size'>{activeSize}</span></div>
                                         <div

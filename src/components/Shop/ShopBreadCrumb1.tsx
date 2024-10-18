@@ -160,6 +160,7 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
             price: 0,
             originPrice: 0,
             brand: 'no-data',
+            sizeGuide: 'no-data',
             sold: 0,
             quantity: 0,
             quantityPurchase: 0,

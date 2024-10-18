@@ -10,7 +10,6 @@ import { ProductType } from '@/type/ProductType'
 import productData from '@/data/Product.json'
 import Product from '@/components/Product/Product'
 import HandlePagination from '@/components/Other/HandlePagination'
-import * as Icon from "@phosphor-icons/react/dist/ssr";
 
 const SearchResult = () => {
     const [searchKeyword, setSearchKeyword] = useState<string>('');
@@ -51,6 +50,7 @@ const SearchResult = () => {
             price: 0,
             originPrice: 0,
             brand: 'no-data',
+            sizeGuide: 'no-data',
             sold: 0,
             quantity: 0,
             quantityPurchase: 0,
