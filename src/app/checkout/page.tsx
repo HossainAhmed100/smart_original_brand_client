@@ -7,10 +7,11 @@ import { useForm } from "react-hook-form";
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
 import Footer from '@/components/Footer/Footer'
 import { useCart } from '@/context/CartContext'
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query'
 import useAxiosPublic from '@/hooks/useAxiosPublic'
 import toast from 'react-hot-toast'
+import { CheckCircle } from "@phosphor-icons/react";
 
 const Checkout = () => {
     const searchParams = useSearchParams()
@@ -18,6 +19,7 @@ const Checkout = () => {
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [deliveryCharge, setDeliveryCharge] = useState(0);
+    const router = useRouter();
     const {data: deliveryChargeInfo = []} = useQuery({
     queryKey: ["deliveryChargeInfo"],
     queryFn: async () => {
@@ -52,7 +54,8 @@ const Checkout = () => {
       try {
         const response = await axiosPublic.post('/orders/', info);
         
-        if (response.status === 200) {
+        if (response.data.phone === phone) {
+            router.push("/")
           console.log("Order created successfully:", response.data);
           // You can add success toast here
           toast.success("Order placed successfully");
@@ -76,56 +79,11 @@ return (
 <MenuOne props="bg-transparent" />
 <Breadcrumb heading='Shopping cart' subHeading='Shopping cart' />
 </div>
-<div className="cart-block md:py-20 py-10">
+<div className="cart-block font-bangla md:py-20 py-10">
 <div className="container">
-<div className="content-main flex justify-between">
-    <div className="left w-1/2">
-        <div className="information mt-5">
-            <div className="heading5">Information</div>
-            <div className="form-checkout mt-5">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="grid sm:grid-cols-2 gap-4 gap-y-5 flex-wrap">
-                        <div className="">
-                            <input {...register("fullName", { required: true })} className="border-line px-4 py-3 w-full rounded-lg" type="text" 
-                            placeholder="Name (আপনার নাম লিখুন)" required />
-                        </div>
-                        <div className="">
-                            <input {...register("phoneNumber", { required: true })} className="border-line px-4 py-3 w-full rounded-lg" type="number" 
-                            placeholder="Mobile Number (মোবাইল নাম্বার)" required />
-                        </div>
-                        <div className="col-span-full">
-                            <textarea {...register("fulladdress", { required: true })} className="border border-line px-4 py-3 w-full rounded-lg" placeholder="Full Address (সম্পূর্ন ঠিকানা)"></textarea>
-                        </div>
-                        <div>
-                        <div>
-                            <h3>শিপিং মেথড:</h3>
-                            {deliveryChargeInfo.map((option: any, index: any) => (
-                                <div key={index}>
-                                <input
-                                    type="radio"
-                                    id={option.deliveryCost}
-                                    name={option.deliveryCost}
-                                    value={option.deliveryCost}
-                                    checked={deliveryCharge === option.deliveryCost}
-                                    onChange={() => handleOptionChange(option.deliveryCost)}
-                                />
-                                <label htmlFor={option.deliveryCost}>{option.deliveryArea}</label>
-                                </div>
-                            ))}
-                            </div>
-                        </div>
-                        <div className="col-span-full">
-                            <textarea className="border border-line px-4 py-3 w-full rounded-lg" id="note" name="note" placeholder="আপনার স্পেশাল কোন রিকোয়ারমেন্ট থাকলে এখানে লিখুন"></textarea>
-                        </div>
-                    </div>
-                    <div className="block-button md:mt-10 mt-6">
-                        <button type="submit" className='button-main bg-[#fc8934] w-full'>আপনার অর্ডার কনফার্ম করতে ক্লিক করুন</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div className="right w-5/12">
+<div className="content-main flex lg:flex-row flex-col lg:justify-between">
+    
+<div className="w-full lg:left lg:w-5/12">
         <div className="checkout-block">
             <div className="heading5 pb-3">Your Order</div>
             <div className="list-product-checkout">
@@ -177,6 +135,59 @@ return (
             <div className="total-cart-block pt-5 flex justify-between">
                 <div className="heading5">Total</div>
                 <div className="heading5 total-cart">৳{totalCart - Number(discount) + deliveryCharge}.00</div>
+            </div>
+        </div>
+    </div>
+    <div className="w-full lg:right lg:w-1/2">
+        <div className="information mt-5">
+            <div className="heading5">Information</div>
+            <div className="form-checkout mt-5">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="grid sm:grid-cols-2 gap-4 gap-y-5 flex-wrap">
+                        <div className="">
+                            <input {...register("fullName", { required: true })} className="border-line px-4 py-3 w-full rounded-lg" type="text" 
+                            placeholder="Name (আপনার নাম লিখুন)" required />
+                        </div>
+                        <div className="">
+                            <input {...register("phoneNumber", { required: true })} className="border-line px-4 py-3 w-full rounded-lg" type="number" 
+                            placeholder="Mobile Number (মোবাইল নাম্বার)" required />
+                        </div>
+                        <div className="col-span-full">
+                            <textarea {...register("fulladdress", { required: true })} className="border border-line px-4 py-3 w-full rounded-lg" placeholder="Full Address (সম্পূর্ন ঠিকানা)"></textarea>
+                        </div>
+                        <div className='col-span-full'>
+                        <div className='space-y-3 flex flex-col'>
+                            <h3>শিপিং মেথড:</h3>
+                            {deliveryChargeInfo.map((option: any, index: any) => (
+                                <div key={index}>
+                                <label className="cursor-pointer">
+                                <input type="radio" className="peer sr-only" name={option.deliveryCost} value={option.deliveryCost} checked={deliveryCharge === option.deliveryCost} onChange={() => handleOptionChange(option.deliveryCost)}/>
+                                <div className={`w-full rounded-md bg-white p-4 text-gray-600 ring-2 transition-all hover:shadow ${option.deliveryCost === deliveryCharge ? 'peer-checked:text-[#fc8934] peer-checked:ring-[#fc8934] peer-checked:ring-offset-2' : ' ring-secondary ring-opacity-10'}`}>
+                                <div className="flex items-center justify-between gap-1">
+                                    <div className="flex items-centser gap-2">
+                                    <div>
+                                      <CheckCircle color={option.deliveryCost === deliveryCharge ? "#fc8934" : "black"}/>
+                                    </div>
+                                    <p className="text-sm font-semibold uppercase text-gray-500">{option.deliveryArea}</p>
+                                    </div>
+                                    <div className="flex items-end justify-between">
+                                    <p><span className="text-lg font-bold">{option.deliveryCost}</span> Taka</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </label>
+                                </div>
+                            ))}
+                            </div>
+                        </div>
+                        <div className="col-span-full">
+                            <textarea className="border border-line px-4 py-3 w-full rounded-lg" id="note" name="note" placeholder="আপনার স্পেশাল কোন রিকোয়ারমেন্ট থাকলে এখানে লিখুন"></textarea>
+                        </div>
+                    </div>
+                    <div className="block-button md:mt-10 mt-6">
+                        <button type="submit" className='button-main bg-[#fc8934] w-full'>আপনার অর্ডার কনফার্ম করতে ক্লিক করুন</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

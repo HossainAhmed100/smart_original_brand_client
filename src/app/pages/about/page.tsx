@@ -17,7 +17,7 @@ const AboutUs = () => {
                 <MenuOne props="bg-transparent" />
                 <Breadcrumb heading='About Us' subHeading='About Us' />
             </div>
-            <div className='about md:pt-20 pt-10'>
+            <div className='about font-bangla md:pt-20 pt-10'>
                 <div className="about-us-block">
                     <div className="container">
                         <div className="text flex items-center justify-center">
@@ -29,7 +29,7 @@ const AboutUs = () => {
                         <div className="list-img grid sm:grid-cols-3 gap-[30px] md:pt-20 pt-10">
                             <div className="bg-img">
                                 <Image
-                                    src={'/images/other/about-us1.png'}
+                                    src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fabout-us1.png?alt=media&token=72e28088-72dc-4d6b-9ca4-8e7d61a940a6'}
                                     width={2000}
                                     height={3000}
                                     alt='bg-img'
@@ -38,7 +38,7 @@ const AboutUs = () => {
                             </div>
                             <div className="bg-img">
                                 <Image
-                                    src={'/images/other/about-us2.png'}
+                                    src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fabout-us2.png?alt=media&token=ae0164c9-139a-4146-a0c3-970d27937ab2'}
                                     width={2000}
                                     height={3000}
                                     alt='bg-img'
@@ -47,7 +47,7 @@ const AboutUs = () => {
                             </div>
                             <div className="bg-img">
                                 <Image
-                                    src={'/images/other/about-us3.png'}
+                                    src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fabout-us3.png?alt=media&token=9c1a8f1d-da97-4738-be19-e258c010cabb'}
                                     width={2000}
                                     height={3000}
                                     alt='bg-img'

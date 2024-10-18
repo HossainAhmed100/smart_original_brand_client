@@ -48,7 +48,7 @@ const FlashSale = () => {
                     </div>
                     <div className="bg-img w-2/5 absolute lg:right-[40px] right-[10px] top-0 max-sm:hidden">
                         <Image
-                            src={'/images/slider/bg1-1.png'}
+                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fbg1-1.png?alt=media&token=947bc5bc-e4e6-4ad1-965f-a9ea0209413e'}
                             width={1000}
                             height={600}
                             alt='bg-img'

@@ -10,40 +10,53 @@ import { useModalCartContext } from '@/context/ModalCartContext'
 import { useCart } from '@/context/CartContext'
 import { countdownTime } from '@/store/countdownTime'
 import CountdownTimeType from '@/type/CountdownType';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) => {
-    const [timeLeft, setTimeLeft] = useState(serverTimeLeft);
+  const [timeLeft, setTimeLeft] = useState(serverTimeLeft);
+  const router = useRouter();
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft(countdownTime());
-        }, 1000);
+  useEffect(() => {
+      const timer = setInterval(() => {
+          setTimeLeft(countdownTime());
+      }, 1000);
 
-        return () => clearInterval(timer);
-    }, []);
+      return () => clearInterval(timer);
+  }, []);
 
-    const [activeTab, setActiveTab] = useState<string | undefined>('')
-    const { isModalOpen, closeModalCart } = useModalCartContext();
-    const { cartState, addToCart, removeFromCart, updateCart } = useCart()
+  const [activeTab, setActiveTab] = useState<string | undefined>('')
+  const { isModalOpen, closeModalCart } = useModalCartContext();
+  const { cartState, addToCart, removeFromCart, updateCart } = useCart()
 
-    const handleAddToCart = (productItem: ProductType) => {
-        if (!cartState.cartArray.find(item => item._id === productItem._id)) {
-            addToCart({ ...productItem });
-            updateCart(productItem._id, productItem.quantityPurchase, '', '')
-        } else {
-            updateCart(productItem._id, productItem.quantityPurchase, '', '')
-        }
-    };
+  const handleAddToCart = (productItem: ProductType) => {
+      if (!cartState.cartArray.find(item => item._id === productItem._id)) {
+          addToCart({ ...productItem });
+          updateCart(productItem._id, productItem.quantityPurchase, '', '')
+      } else {
+          updateCart(productItem._id, productItem.quantityPurchase, '', '')
+      }
+  };
 
-    const handleActiveTab = (tab: string) => {
-        setActiveTab(tab)
+  const handleActiveTab = (tab: string) => {
+      setActiveTab(tab)
+  }
+
+  let moneyForFreeship = 5000;
+  let [totalCart, setTotalCart] = useState<number>(0);
+  let [discountCart, setDiscountCart] = useState<number>(0);
+
+  cartState.cartArray.map(item => totalCart += item.price * item.quantity);
+
+  const handleOrderCheckout: any = () => {
+    if(cartState.cartArray.length > 0) {
+      closeModalCart()
+      router.push("/checkout")
+    } else{
+      toast.error("Please add something to your cart");
     }
-
-    let moneyForFreeship = 5000;
-    let [totalCart, setTotalCart] = useState<number>(0);
-    let [discountCart, setDiscountCart] = useState<number>(0);
-
-    cartState.cartArray.map(item => totalCart += item.price * item.quantity);
+      
+  }
     return (
         <>
         <div className={`modal-cart-block`} onClick={closeModalCart}>
@@ -55,7 +68,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
             <div className="heading px-6 pb-3 flex items-center justify-between relative">
                 <div className="heading5">Shopping Cart</div>
                 <div
-                    className="close-btn absolute right-6 top-0 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-black hover:text-white"
+                    className="close-btn absolute right-6 top-0 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-[#fc8934] hover:text-white"
                     onClick={closeModalCart}
                 >
                     <Icon.X size={14} />
@@ -129,13 +142,13 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                 </div>
                 <div className="block-button text-center p-6">
                     <div className="flex items-center gap-4">
-                        <Link
-                            href={'/checkout'}
-                            className='button-main bg-[#fc8934] w-full text-center uppercase'
-                            onClick={closeModalCart}
+                        <div
+                            
+                            className='button-main bg-[#fc8934] font-bangla text-base font-medium w-full text-center uppercase'
+                            onClick={handleOrderCheckout}
                         >
                             আপনার অর্ডার কনফার্ম করতে ক্লিক করুন
-                        </Link>
+                        </div>
                     </div>
                     <div onClick={closeModalCart} className="text-button-uppercase mt-4 text-center has-line-before cursor-pointer inline-block">Or continue shopping</div>
                 </div>
@@ -172,7 +185,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                         <div onClick={() => setActiveTab('')} className="text-button-uppercase mt-4 text-center has-line-before cursor-pointer inline-block">Cancel</div>
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
         </div>
         </div>

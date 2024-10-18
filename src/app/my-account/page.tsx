@@ -23,7 +23,7 @@ const MyAccount = () => {
                         <div className="left xl:w-1/3 md:w-5/12 w-full xl:pr-[40px] lg:pr-[28px] md:pr-[16px]">
                             <div className="user-infor bg-surface md:px-8 px-5 md:py-10 py-6 md:rounded-[20px] rounded-xl">
                                 <div className="heading flex flex-col items-center justify-center">
-                                    <div className="avatar">
+                                    {/* <div className="avatar">
                                         <Image
                                             src={'/images/avatar/1.png'}
                                             width={300}
@@ -31,9 +31,9 @@ const MyAccount = () => {
                                             alt='avatar'
                                             className='md:w-[140px] w-[120px] md:h-[140px] h-[120px] rounded-full'
                                         />
-                                    </div>
-                                    <div className="name heading6 mt-4 text-center">Hossain Ahmed</div>
-                                    <div className="mail heading6 font-normal normal-case text-center mt-1">hi.avitex@gmail.com</div>
+                                    </div> */}
+                                    <div className="name heading6 mt-4 text-center">N/A</div>
+                                    <div className="mail heading6 font-normal normal-case text-center mt-1">N/A</div>
                                 </div>
                                 <div className="menu-tab lg:mt-10 mt-6">
                                     <div className="item px-5 py-4 flex items-center gap-3 cursor-pointer">
@@ -61,13 +61,13 @@ const MyAccount = () => {
                                     <div className="heading5 pb-4">Information</div>
                                     <div className='grid sm:grid-cols-2 gap-4 gap-y-5'>
                                         <div className="first-name ">
-                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="fullnAME" type="text" defaultValue={'Hossain Ahmed'} placeholder='First name' required />
+                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="fullnAME" type="text" placeholder='Full name' required />
                                         </div>
                                         <div className="email ">
-                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="email" type="email" defaultValue={'hi.hossain@gmail.com'} placeholder="Email address" required />
+                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="email" type="email"  placeholder="Email address" required />
                                         </div>
                                         <div className="phone-number">
-                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="phoneNumber" type="text" defaultValue={'(+880) 1322 3600 98'} placeholder="Phone number" required />
+                                            <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="phoneNumber" type="text" placeholder="Phone number" required />
                                         </div>
                                         <div className="col-span-full select-block">
                                             <select className="border border-line px-4 py-3 w-full rounded-lg" id="region" name="region" defaultValue={'default'}>

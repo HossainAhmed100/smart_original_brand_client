@@ -17,6 +17,7 @@ import ModalSizeguide from '@/components/Modal/ModalSizeguide'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosPublic from '@/hooks/useAxiosPublic'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 SwiperCore.use([Navigation, Thumbs]);
 
@@ -81,18 +82,21 @@ const Default: React.FC<Props> = ({ productId }) => {
     };
 
     const handleActiveColor = (item: string) => {
+        console.log(item)
         setActiveColor(item)
 
         // // Find variation with selected color
-        // const foundColor = productMain.variation.find((variation) => variation.color === item);
+        const foundColor = productMain.variation.find((variation) => variation.color === item);
+        console.log("found Color", foundColor)
         // // If found, slide next to img
-        // if (foundColor) {
-        //     const index = productMain.images.indexOf(foundColor.image);
+        if (foundColor) {
+            const index = productMain.images.indexOf(foundColor.image);
+            console.log("index", index)
 
-        //     if (index !== -1) {
-        //         swiperRef.current?.slideTo(index);
-        //     }
-        // }
+            if (index !== -1) {
+                swiperRef.current?.slideTo(index);
+            }
+        }
     }
 
     const handleActiveSize = (item: string) => {
@@ -112,23 +116,24 @@ const Default: React.FC<Props> = ({ productId }) => {
     };
 
     const handleAddToCart = () => {
-        
+        const quantity = productMain.quantityPurchase === 0 ? 1 : productMain.quantityPurchase;
         if (!cartState.cartArray.find(item => item._id === productMain._id)) {
             addToCart({ ...productMain });
-            updateCart(productMain._id, productMain.quantityPurchase, activeSize, activeColor)
+            updateCart(productMain._id, quantity, activeSize, activeColor)
         } else {
-            updateCart(productMain._id, productMain.quantityPurchase, activeSize, activeColor)
+            updateCart(productMain._id, quantity, activeSize, activeColor)
         }
         openModalCart()
     };
 
     const handleBuyNow = () => {
         
+        const quantity = productMain.quantityPurchase === 0 ? 1 : productMain.quantityPurchase;
         if (!cartState.cartArray.find(item => item._id === productMain._id)) {
             addToCart({ ...productMain });
-            updateCart(productMain._id, productMain.quantityPurchase, activeSize, activeColor)
+            updateCart(productMain._id, quantity, activeSize, activeColor)
         } else {
-            updateCart(productMain._id, productMain.quantityPurchase, activeSize, activeColor)
+            updateCart(productMain._id, quantity, activeSize, activeColor)
         }
         openModalCart()
         router.push("/")
@@ -272,10 +277,10 @@ const Default: React.FC<Props> = ({ productId }) => {
                             </div>
                             <div className="flex items-center mt-3">
                                 <Rate currentRate={productMain.rate} size={14} />
-                                <span className='caption1 text-secondary'>(1.234 reviews)</span>
+                                <span className='caption1 text-secondary'>(0 reviews)</span>
                             </div>
                             <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
-                                <div className="product-price heading5">৳{productMain.price}.00</div>
+                                <div className="product-price font-bangla heading5">৳{productMain.price}.00</div>
                                 <div className='w-px h-4 bg-line'></div>
                                 <div className="product-origin-price font-normal text-secondary2"><del>৳{productMain.originPrice}.00</del></div>
                                 {productMain.originPrice && (
@@ -312,7 +317,7 @@ const Default: React.FC<Props> = ({ productId }) => {
                                     <div className="heading flex items-center justify-between">
                                         <div className="text-title">Size: <span className='text-title size'>{activeSize}</span></div>
                                         <div
-                                            className="caption1 size-guide text-red underline cursor-pointer"
+                                            className="caption1 size-guide text-[#fc8934] underline cursor-pointer"
                                             onClick={handleOpenSizeGuide}
                                         >
                                             Size Guide
@@ -346,10 +351,10 @@ const Default: React.FC<Props> = ({ productId }) => {
                                             className='cursor-pointer'
                                         />
                                     </div>
-                                    <div onClick={handleAddToCart} className="button-main w-full text-center bg-black text-white border border-black">Add To Cart</div>
+                                    <div onClick={handleAddToCart} className="button-main w-full text-center bg-white text-[#fc8934] hover:bg-[#fc8934] border border-[#fc8934]">Add To Cart</div>
                                 </div>
                                 <div className="button-block mt-5">
-                                    <div onClick={handleAddToCart} className="button-main bg-[#fc8934] w-full text-center">Buy It Now</div>
+                                    <Link  href={'/checkout'} onClick={handleBuyNow} className="button-main bg-[#fc8934] w-full text-center">Buy It Now</Link>
                                 </div>
                                 <div className="">
                                     <div className="more-infor">
@@ -374,7 +379,7 @@ const Default: React.FC<Props> = ({ productId }) => {
                                 <div className='grid md:grid-cols-2 gap-8 gap-y-5'>
                                     <div className="left">
                                         <div className="heading6">Description</div>
-                                        <pre className="text-secondary mt-2">
+                                        <pre className="text-secondary font-bangla mt-2">
                                         {productMain.description}
                                         </pre>
                                     </div>

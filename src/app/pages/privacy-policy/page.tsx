@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
           <MenuOne props="bg-transparent" />
           <Breadcrumb heading='Privacy Policy' subHeading='Policy' />
         </div>
-      <div className="max-w-4xl mx-auto px-4 md:px-6 py-12">
+      <div className="max-w-4xl font-bangla mx-auto px-4 md:px-6 py-12">
         <div className="space-y-8">
           <div>
             <h1 className="text-3xl font-bold">Privacy Policy</h1>

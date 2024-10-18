@@ -17,14 +17,14 @@ const PageNotFound = () => {
             <div className='page-not-found md:py-20 py-10 bg-linear md:mt-[74px] mt-14'>
                 <div className="container">
                     <div className="flex items-center justify-between max-sm:flex-col gap-y-8">
-                        <Image
+                        {/* <Image
                             src={'/images/other/404-img.png'}
                             width={2000}
                             height={2000}
                             alt='bg-img'
                             priority={true}
                             className='sm:w-1/2 w-3/4'
-                        />
+                        /> */}
                         <div className="text-content sm:w-1/2 w-full flex items-center justify-center sm:pl-10">
                             <div className=''>
                                 <div className="lg:text-[140px] md:text-[80px] text-[42px] lg:leading-[152px] md:leading-[92px] leading-[52px] font-semibold">404</div>

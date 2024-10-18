@@ -48,11 +48,11 @@ const MenFashion: React.FC<Props> = ({ data, start, limit }) => {
                         </div>
                     </div>
 
-                    <div className="list-product hide-product-sold  grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
+                    <div className="list-product hide-product-sold min-h-[500px] grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
                         <Link href={"/shop/breadcrumb1"} className="banner rounded-[20px] overflow-hidden relative flex items-center justify-center">
                             <div className="heading4 text-white text-center">Fashion For <br />Men</div>
                             <Image
-                                src={'/images/banner/13.png'}
+                                src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2F13.png?alt=media&token=83fa38da-ed93-4078-8b52-d70cdb0a0b43'}
                                 width={1000}
                                 height={1000}
                                 alt='banner13'

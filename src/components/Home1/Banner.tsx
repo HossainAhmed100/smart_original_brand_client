@@ -9,7 +9,7 @@ const Banner = () => {
                 <Link href={'/shop/breadcrumb-img'} className="banner-item relative block overflow-hidden duration-500">
                     <div className="banner-img">
                         <Image
-                            src={'/images/banner/1.png'}
+                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2F1.png?alt=media&token=edc1f30e-5abe-46d9-94d2-7e2bc7ef7551'}
                             width={2000}
                             height={1300}
                             alt='banner1'
@@ -25,7 +25,7 @@ const Banner = () => {
                 <Link href={'/shop/breadcrumb-img'} className="banner-item relative block overflow-hidden duration-500">
                     <div className="banner-img">
                         <Image
-                            src={'/images/banner/2.png'}
+                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2F2%20copy.png?alt=media&token=5b90d8a4-6902-41eb-b17e-37d3652a5bb3'}
                             width={2000}
                             height={1300}
                             alt='banner2'

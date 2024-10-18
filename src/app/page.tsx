@@ -5,20 +5,15 @@ import SliderOne from '@/components/Slider/SliderOne'
 import WhatNewOne from '@/components/Home1/WhatNewOne'
 import productData from '@/data/Product.json'
 import Collection from '@/components/Home1/Collection'
-import TabFeatures from '@/components/Home1/TabFeatures'
-import Banner from '@/components/Home1/Banner'
-import Benefit from '@/components/Home1/Benefit'
-import testimonialData from '@/data/Testimonial.json'
-import Testimonial from '@/components/Home1/Testimonial'
 import Instagram from '@/components/Home1/Instagram'
-import Brand from '@/components/Home1/Brand'
 import Footer from '@/components/Footer/Footer'
-import FlashSale from '@/components/Home1/FlashSale'
-import SliderEleven from '@/components/Slider/SliderEleven'
 import TrendingNow from '@/components/Home1/TrendingNow'
 import MenFashion from '@/components/Home1/MenFashion'
 import WomenFashion from '@/components/Home1/WomenFashion'
 import Deal from '@/components/Home1/Deal'
+import ModalNewsletter from '@/components/Modal/ModalNewsletter'
+import Banner from '@/components/Home1/Banner'
+import FlashSale from '@/components/Home1/FlashSale'
 
 export default function Home() {
   return (
@@ -32,10 +27,13 @@ export default function Home() {
       <Deal data={productData} start={4} limit={8} />
       <WhatNewOne start={0} limit={4} />
       <Collection />
+      <Banner />
       <MenFashion data={productData} start={0} limit={3} />
+      <FlashSale />
       <WomenFashion data={productData} start={0} limit={3} />
       <Instagram />
       <Footer />
+      <ModalNewsletter />
     </>
   )
 }

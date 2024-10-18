@@ -236,7 +236,7 @@ const MenuOne: React.FC<Props> = ({ props }) => {
                                             onClick={() => handleTypeClick('mans-polo')}
                                             className={`link text-secondary duration-300 cursor-pointer`}
                                             >
-                                            Men's Polo
+                                            Mens Polo
                                             </div>
                                           </li>  
                                           <li>
@@ -244,7 +244,7 @@ const MenuOne: React.FC<Props> = ({ props }) => {
                                             onClick={() => handleTypeClick('womens-polo')}
                                             className={`link text-secondary duration-300 cursor-pointer`}
                                             >
-                                            Women's Polo
+                                            Womens Polo
                                             </div>
                                           </li>  
                                           <li>
@@ -465,7 +465,9 @@ const MenuOne: React.FC<Props> = ({ props }) => {
                                 >
                                     <Icon.X size={14} />
                                 </div>
-                                <Link href={'/'} className='logo text-3xl font-semibold text-center'>Anvogue</Link>
+                                <Link href={'/'} className='flex items-center'>
+                                <Image src="https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Flogoline.png?alt=media&token=9d80f142-37eb-48d5-be73-c37ee0dd2cfd" width={170} height={25} alt='brand logo'/>
+                            </Link>
                             </div>
                             <div className="form-search relative mt-2">
                                 <Icon.MagnifyingGlass size={20} className='absolute left-3 top-1/2 -translate-y-1/2 cursor-pointer' />
@@ -901,40 +903,6 @@ const MenuOne: React.FC<Props> = ({ props }) => {
                                                                 </div>
                                                             </li>
                                                         </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="banner-ads-block grid sm:grid-cols-2 items-center gap-6 pt-6">
-                                                    <div className="banner-ads-item bg-linear rounded-2xl relative overflow-hidden" onClick={() => handleTypeClick('swimwear')}>
-                                                        <div className="text-content py-14 pl-8 relative z-[1]">
-                                                            <div className="text-button-uppercase text-white bg-red px-2 py-0.5 inline-block rounded-sm">Save $10</div>
-                                                            <div className="heading6 mt-2">Dive into Savings <br />on Swimwear</div>
-                                                            <div className="body1 mt-3 text-secondary">
-                                                                Starting at <span className='text-red'>$59.99</span>
-                                                            </div>
-                                                        </div>
-                                                        <Image
-                                                            src={'/images/slider/bg2-2.png'}
-                                                            width={200}
-                                                            height={100}
-                                                            alt='bg-img'
-                                                            className='basis-1/3 absolute right-0 top-0'
-                                                        />
-                                                    </div>
-                                                    <div className="banner-ads-item bg-linear rounded-2xl relative overflow-hidden" onClick={() => handleTypeClick('accessories')}>
-                                                        <div className="text-content py-14 pl-8 relative z-[1]">
-                                                            <div className="text-button-uppercase text-white bg-red px-2 py-0.5 inline-block rounded-sm">Save $10</div>
-                                                            <div className="heading6 mt-2">20% off <br />accessories</div>
-                                                            <div className="body1 mt-3 text-secondary">
-                                                                Starting at <span className='text-red'>$59.99</span>
-                                                            </div>
-                                                        </div>
-                                                        <Image
-                                                            src={'/images/other/bg-feature.png'}
-                                                            width={200}
-                                                            height={100}
-                                                            alt='bg-img'
-                                                            className='basis-1/3 absolute right-0 top-0'
-                                                        />
                                                     </div>
                                                 </div>
                                             </div>

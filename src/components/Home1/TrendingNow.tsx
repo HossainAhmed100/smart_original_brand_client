@@ -32,10 +32,11 @@ const TrendingNow = () => {
                 <div className="container">
                     <div className="heading3 text-center">Trending Category
                     </div>
-                    <div className="list-trending section-swiper-navigation style-small-border style-center style-outline md:mt-10 mt-6">
+                    <div className="list-trending section-swiper-navigation style-small-border mx-auto style-center style-outline md:mt-10 mt-6">
                         <Swiper
                             spaceBetween={12}
                             slidesPerView={2}
+                            
                             navigation
                             loop={true}
                             modules={[Navigation, Autoplay]}

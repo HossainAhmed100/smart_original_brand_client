@@ -10,6 +10,7 @@ import { countdownTime } from '@/store/countdownTime'
 import 'sweetalert2/src/sweetalert2.scss'
 import Providers from './Providers'
 import ModalCart from '@/components/Modal/ModalCart'
+import "./newstyle.css"
 
 export const metadata: Metadata = {
   title: 'Smart Original Brand',

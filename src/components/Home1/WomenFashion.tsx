@@ -47,11 +47,11 @@ const WomenFashion: React.FC<Props> = ({ data, start, limit }) => {
                         </div>
                     </div>
 
-                    <div className="list-product hide-product-sold  grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
+                    <div className="list-product hide-product-sold min-h-[500px] grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
                         <Link href={"/shop/breadcrumb1"} className="banner rounded-[20px] overflow-hidden relative flex items-center justify-center">
                             <div className="heading4 text-white text-center">Trouses For <br />Men</div>
                             <Image
-                                src={'/images/banner/14.png'}
+                                src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2F14.png?alt=media&token=68d06553-a50f-457f-9d72-08aababcac74'}
                                 width={1000}
                                 height={1000}
                                 alt='banner13'

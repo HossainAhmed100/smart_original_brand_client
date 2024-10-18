@@ -15,7 +15,7 @@ export const metadata = {
             <MenuOne props="bg-transparent" />
             <Breadcrumb heading='Return and Refund' subHeading='Policy' />
           </div>
-        <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
+        <div className="container mx-auto font-bangla max-w-4xl px-4 py-12 md:px-6 md:py-16">
           <h1 className="mb-6 text-3xl font-bold md:text-4xl">রিটার্ন এন্ড রিফান্ড পলিসি</h1>
           <p className="mb-8 text-gray-500">
           ১. ত্রুটিপূর্ ণঅথবা ভুল পর্য পপলল পর্য হালে পাওয়ার ০৩ (তেন) কার্ ণতিবলের মলযয জানালে হলব। তনলের

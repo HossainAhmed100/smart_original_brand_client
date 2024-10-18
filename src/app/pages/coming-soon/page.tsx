@@ -21,7 +21,7 @@ const ComingSoon = () => {
         <>
             <div className="coming-soon relative w-screen h-screen">
                 <Image
-                    src={'/images/other/bg-coming-soon.png'}
+                    src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fbg-coming-soon.png?alt=media&token=e2fab1a0-5da9-4aae-ac13-48a7006ef9d3'}
                     width={4000}
                     height={3000}
                     alt='bg'
