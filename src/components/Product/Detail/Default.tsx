@@ -42,7 +42,7 @@ const Default: React.FC<Props> = ({ productId }) => {
 
     // Fetching the product data using useQuery
     const { data: productMain, isLoading } = useQuery<ProductType>({
-        queryKey: ["products", productId],
+        queryKey: ["productMain", productId],
         queryFn: async () => {
             const res = await axiosPublic.get(`/products/productsById/${productId}`);
             return res.data;

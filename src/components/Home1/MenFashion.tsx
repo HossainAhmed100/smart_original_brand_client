@@ -7,6 +7,8 @@ import Product from '../Product/Product'
 import { ProductType } from '@/type/ProductType'
 import { motion } from 'framer-motion'
 import useProduct from '@/hooks/useProduct';
+import usePrCategory from '@/hooks/useCategory';
+import { ProductCategoryType } from '@/type/ProductCategoryType';
 
 interface Props {
     data: Array<ProductType>;
@@ -15,8 +17,9 @@ interface Props {
 }
 
 const MenFashion: React.FC<Props> = ({ data, start, limit }) => {
-    const [activeTab, setActiveTab] = useState<string>('t-shirt');
+    const [activeTab, setActiveTab] = useState<string>('T-Shirt');
     const [products, isLoading] = useProduct();
+    const [prCategory] = usePrCategory();
 
     const handleTabClick = (type: string) => {
         setActiveTab(type);
@@ -31,17 +34,17 @@ const MenFashion: React.FC<Props> = ({ data, start, limit }) => {
                     <div className="heading flex items-center justify-between gap-5 flex-wrap">
                         <div className="heading3">men{String.raw`'s`} Fashion</div>
                         <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl">
-                            {['t-shirt', 'wallet', 'jacket', 'hoodie'].map((type) => (
+                            {prCategory.map((type: ProductCategoryType) => (
                                 <div
-                                    key={type}
-                                    className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-black ${activeTab === type ? 'active' : ''}`}
-                                    onClick={() => handleTabClick(type)}
+                                    key={type.path}
+                                    className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-black ${activeTab === type.path ? 'active' : ''}`}
+                                    onClick={() => handleTabClick(type.path)}
                                 >
-                                    {activeTab === type && (
+                                    {activeTab === type.path && (
                                         <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-white'></motion.div>
                                     )}
                                     <span className='relative text-button-uppercase z-[1]'>
-                                        {type}
+                                        {type.label}
                                     </span>
                                 </div>
                             ))}

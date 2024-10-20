@@ -2,17 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 import { ProductCategoryType } from "@/type/ProductCategoryType";
 
-function useCategory() {
+function usePrCategory() {
     const axiosPublic = useAxiosPublic();
-    const { data: category = [], isLoading } = useQuery<ProductCategoryType[]>({
-        queryKey: ["category"],
+    const { data: prCategory = [], isLoading } = useQuery<ProductCategoryType[]>({
+        queryKey: ["prCategory"],
         queryFn: async () => {
-          const url = `/layout/category/`;
-          const res = await axiosPublic.get(url);
+          const res = await axiosPublic.get('/layout/category/');
           return res.data;
         },
       });
-  return [category, isLoading] as const
+  return [prCategory, isLoading] as const
 }
 
-export default useCategory
+export default usePrCategory
