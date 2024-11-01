@@ -8,6 +8,7 @@ import useProduct from '@/hooks/useProduct'
 import Loading from '../Other/Loading'
 import usePrCategory from '@/hooks/useCategory'
 import { ProductCategoryType } from '@/type/ProductCategoryType'
+import Link from 'next/link'
 
 interface Props {
   start: number;
@@ -34,7 +35,7 @@ const WhatNewOne: React.FC<Props> = ({ start, limit }) => {
             <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl mt-6">
               {prCategory.map((type: ProductCategoryType) => (
                 <div
-                  key={type.path}
+                key={type._id}
                   className={`tab-item relative text-secondary text-button-uppercase py-2 px-5 cursor-pointer duration-500 hover:text-black ${activeTab === type.path ? 'active' : ''}`}
                   onClick={() => handleTabClick(type.path)}
                 >
@@ -49,12 +50,15 @@ const WhatNewOne: React.FC<Props> = ({ start, limit }) => {
             </div>
           </div>
           <div className='w-full flex items-center justify-center'>
-          {isLoading && <Loading />}
+            {isLoading && <Loading />}
           </div>
           <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
             {filteredProducts.slice(start, limit).map((prd: ProductType, index: number) => (
               <Product data={prd} type='grid' key={index} />
             ))}
+          </div>
+          <div className='flex items-center justify-center w-full py-2'>
+            <Link href='/shop/breadcrumb-img' className="button-main md:mt-8 mt-3">View All Products</Link>
           </div>
         </div>
       </div>

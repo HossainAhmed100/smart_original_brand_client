@@ -11,7 +11,7 @@ const TopNavOne: React.FC<Props> = ({ props, slogan }) => {
                 <div className="container mx-auto h-full">
                     <div className="top-nav-main flex justify-center max-md:justify-center h-full">
                         <div className="text-center text-base font-bangla sm:font-medium font-normal text-white flex items-center">
-                        আমাদের যে কোন পণ্য অর্ডার করতে কল বা WhatsApp করুন: +880 1975-859249
+                        আমাদের যে কোন পণ্য অর্ডার করতে কল বা WhatsApp করুন: +880 9613-660320
                         </div>
                     </div>
                 </div>

@@ -11,17 +11,20 @@ import usePrCategory from '@/hooks/useCategory';
 import { ProductCategoryType } from '@/type/ProductCategoryType';
 
 interface Props {
-    data: Array<ProductType>;
     start: number;
     limit: number;
 }
 
-const WomenFashion: React.FC<Props> = ({ data, start, limit }) => {
-    const [activeTab, setActiveTab] = useState<string>('Jacket');
+const WomenFashion: React.FC<Props> = ({ start, limit }) => {
+    const [activeTab, setActiveTab] = useState<string>('Polo');
     const [products, isLoading] = useProduct();
     const [prCategory] = usePrCategory();
-    const handleTabClick = (type: string) => {
-        setActiveTab(type);
+    
+    const [activeCategory, setActiveCategory] = useState<string>('https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fimage-1730380593614-Polo%20(2).png?alt=media&token=ffbb2764-4482-4d61-8b6d-093c0729e756');
+
+    const handleTabClick = (path: string, imgUrl: string) => {
+        setActiveTab(path);
+        setActiveCategory(imgUrl)
     };
 
     const filteredProducts = products.filter((product: ProductType) => product.category === activeTab);
@@ -35,9 +38,9 @@ const WomenFashion: React.FC<Props> = ({ data, start, limit }) => {
                         <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl">
                             {prCategory.map((type: ProductCategoryType) => (
                                 <div
-                                    key={type.path}
+                                key={type._id}
                                     className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-black ${activeTab === type.path ? 'active' : ''}`}
-                                    onClick={() => handleTabClick(type.path)}
+                                    onClick={() => handleTabClick(type.path, type.imgUrl)}
                                 >
                                     {activeTab === type.path && (
                                         <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-white'></motion.div>
@@ -51,10 +54,9 @@ const WomenFashion: React.FC<Props> = ({ data, start, limit }) => {
                     </div>
 
                     <div className="list-product hide-product-sold min-h-[500px] grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
-                        <Link href={"/shop/breadcrumb1"} className="banner rounded-[20px] overflow-hidden relative flex items-center justify-center">
-                            <div className="heading4 text-white text-center">Trouses For <br />Men</div>
+                        <Link href={"/shop/breadcrumb-img"} className="banner rounded-[20px] overflow-hidden relative flex items-center justify-center">
                             <Image
-                                src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2F14.png?alt=media&token=68d06553-a50f-457f-9d72-08aababcac74'}
+                                src={activeCategory}
                                 width={1000}
                                 height={1000}
                                 alt='banner13'

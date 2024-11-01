@@ -23,7 +23,7 @@ const TrendingNow = () => {
         })
 
     const handleTypeClick = (type: string) => {
-        router.push(`/shop/breadcrumb1?type=${type}`);
+        router.push(`/shop/breadcrumb-img?type=${type}`);
     };
 
     return (

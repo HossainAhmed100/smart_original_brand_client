@@ -34,7 +34,7 @@ const Deal: React.FC<Props> = ({ data, start, limit }) => {
                         <div className="left flex items-center gap-6 gap-y-3 flex-wrap">
                             <div className="heading3">Deals of the day</div>
                         </div>
-                        <Link href={'/shop/breadcrumb1'} className='text-button text-[#fc8934] pb-1 border-b-2 border-[#fc8934]'>View All Deals</Link>
+                        <Link href={'/shop/breadcrumb-img'} className='text-button text-[#fc8934] pb-1 border-b-2 border-[#fc8934]'>View All Deals</Link>
                     </div>
 
                     <div className="list-product show-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">

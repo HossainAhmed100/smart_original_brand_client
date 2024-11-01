@@ -1,16 +1,13 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { ProductType } from '@/type/ProductType'
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { useCart } from '@/context/CartContext'
 import { useModalCartContext } from '@/context/ModalCartContext'
 import { useWishlist } from '@/context/WishlistContext'
 import { useModalWishlistContext } from '@/context/ModalWishlistContext'
-import { useCompare } from '@/context/CompareContext'
-import { useModalCompareContext } from '@/context/ModalCompareContext'
 import { useModalQuickviewContext } from '@/context/ModalQuickviewContext'
 import { useRouter } from 'next/navigation'
 import Marquee from 'react-fast-marquee'
@@ -29,8 +26,6 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
     const { openModalCart } = useModalCartContext()
     const { addToWishlist, removeFromWishlist, wishlistState } = useWishlist();
     const { openModalWishlist } = useModalWishlistContext()
-    const { addToCompare, removeFromCompare, compareState } = useCompare();
-    const { openModalCompare } = useModalCompareContext()
     const { openQuickview } = useModalQuickviewContext()
     const router = useRouter()
 
@@ -63,22 +58,6 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
         openModalWishlist();
     };
 
-    const handleAddToCompare = () => {
-        // if product existed in wishlit, remove from wishlist and set state to false
-        if (compareState.compareArray.length < 3) {
-            if (compareState.compareArray.some(item => item._id === data._id)) {
-                removeFromCompare(data._id);
-            } else {
-                // else, add to wishlist and set state to true
-                addToCompare(data);
-            }
-        } else {
-            alert('Compare up to 3 products')
-        }
-
-        openModalCompare();
-    };
-
     const handleQuickviewOpen = () => {
         openQuickview(data)
     }
@@ -98,7 +77,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                     <div onClick={() => handleDetailProduct(data._id)} className="product-main cursor-pointer block">
                         <div className="product-thumb bg-white relative overflow-hidden rounded-2xl">
                             {data.new && (
-                                <div className="product-tag text-button-uppercase bg-[#fc8934] px-3 py-0.5 inline-block rounded-full absolute top-3 left-3 z-[1]">
+                                <div className="product-tag text-white text-button-uppercase bg-[#fc8934] px-3 py-0.5 inline-block rounded-full absolute top-3 left-3 z-[1]">
                                     New
                                 </div>
                             )}
@@ -126,17 +105,6 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                         </>
                                     )}
                                 </div>
-                                <div
-                                    className={`compare-btn w-[32px] h-[32px] flex items-center justify-center rounded-full bg-white duration-300 relative mt-2 ${compareState.compareArray.some(item => item._id === data._id) ? 'active' : ''}`}
-                                    onClick={(e) => {
-                                        e.stopPropagation()
-                                        handleAddToCompare()
-                                    }}
-                                >
-                                    <div className="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">Compare Product</div>
-                                    <Icon.Repeat size={18} className='compare-icon' />
-                                    <Icon.CheckCircle size={20} className='checked-icon' />
-                                </div>
                             </div>
                             <div className="product-img w-full h-full aspect-[3/4]">
                                 {activeColor ? (
@@ -157,14 +125,14 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                         {
                                             data.thumbImage.map((img, index) => (
                                                 <Image
-                                                    key={index}
-                                                    src={img}
-                                                    width={500}
-                                                    height={500}
-                                                    priority={true}
-                                                    alt={data.name}
-                                                    className='w-full h-full object-cover duration-700'
-                                                />
+                                                  key={index}
+                                                  src={img}
+                                                  width={500}
+                                                  height={500}
+                                                  priority={true}
+                                                  alt={data.name}
+                                                  className='w-full h-full object-cover duration-700'
+                                              />
                                             ))
                                         }
                                     </>
@@ -173,17 +141,17 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                             {data.sale && (
                                 <>
                                     <Marquee className='banner-sale-auto bg-black absolute bottom-0 left-0 w-full py-1.5'>
-                                        <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
-                                        <Icon.Lightning weight='fill' className='text-red' />
-                                        <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
-                                        <Icon.Lightning weight='fill' className='text-red' />
-                                        <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
-                                        <Icon.Lightning weight='fill' className='text-red' />
-                                        <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
-                                        <Icon.Lightning weight='fill' className='text-red' />
-                                        <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
-                                        <Icon.Lightning weight='fill' className='text-red' />
-                                    </Marquee>
+                                      <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
+                                      <Icon.Lightning weight='fill' className='text-[#fc8934]' />
+                                      <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
+                                      <Icon.Lightning weight='fill' className='text-[#fc8934]' />
+                                      <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
+                                      <Icon.Lightning weight='fill' className='text-[#fc8934]' />
+                                      <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
+                                      <Icon.Lightning weight='fill' className='text-[#fc8934]' />
+                                      <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
+                                      <Icon.Lightning weight='fill' className='text-[#fc8934]' />
+                                  </Marquee>
                                 </>
                             )}
                             <div className="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
@@ -494,17 +462,6 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                             )}
                                         </div>
                                         <div
-                                            className={`compare-btn w-[32px] h-[32px] flex items-center justify-center rounded-full bg-white duration-300 relative ${compareState.compareArray.some(item => item._id === data._id) ? 'active' : ''}`}
-                                            onClick={(e) => {
-                                                e.stopPropagation()
-                                                handleAddToCompare()
-                                            }}
-                                        >
-                                            <div className="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">Compare Product</div>
-                                            <Icon.ArrowsCounterClockwise size={18} className='compare-icon' />
-                                            <Icon.CheckCircle size={20} className='checked-icon' />
-                                        </div>
-                                        <div
                                             className="quick-view-btn-list w-[32px] h-[32px] flex items-center justify-center rounded-full bg-white duration-300 relative"
                                             onClick={(e) => {
                                                 e.stopPropagation()
@@ -547,16 +504,6 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                         <Icon.Heart size={18} />
                                     </>
                                 )}
-                            </span>
-                            <span
-                                className={`compare-btn w-8 h-8 bg-white flex items-center justify-center rounded-full box-shadow-small duration-300 ${compareState.compareArray.some(item => item._id === data._id) ? 'active' : ''}`}
-                                onClick={(e) => {
-                                    e.stopPropagation()
-                                    handleAddToCompare()
-                                }}
-                            >
-                                <Icon.Repeat size={18} className='compare-icon' />
-                                <Icon.CheckCircle size={20} className='checked-icon' />
                             </span>
                             <span
                                 className="quick-view-btn w-8 h-8 bg-white flex items-center justify-center rounded-full box-shadow-small duration-300"

@@ -26,13 +26,14 @@ interface Props {
 }
 
 const Default: React.FC<Props> = ({ productId }) => {
-    console.log("🚀 ~ productId:", productId)
     const swiperRef: any = useRef();
     const [openPopupImg, setOpenPopupImg] = useState(false)
     const [openSizeGuide, setOpenSizeGuide] = useState<boolean>(false)
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null);
     const [activeColor, setActiveColor] = useState<string>('')
+    console.log(activeColor)
     const [activeSize, setActiveSize] = useState<string>('')
+    console.log(activeSize)
     const { addToCart, updateCart, cartState } = useCart()
     const { openModalCart } = useModalCartContext()
     const { addToWishlist, removeFromWishlist, wishlistState } = useWishlist()
@@ -275,19 +276,11 @@ const Default: React.FC<Props> = ({ productId }) => {
                                     )}
                                 </div>
                             </div>
-                            <div className="flex items-center mt-3">
-                                <Rate currentRate={productMain.rate} size={14} />
-                                <span className='caption1 text-secondary'>(0 reviews)</span>
-                            </div>
                             <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
                                 <div className="product-price font-bangla heading5">৳{productMain.price}.00</div>
                                 <div className='w-px h-4 bg-line'></div>
                                 <div className="product-origin-price font-normal text-secondary2"><del>৳{productMain.originPrice}.00</del></div>
-                                {productMain.originPrice && (
-                                    <div className="product-sale caption2 font-semibold bg-[#fc8934] px-3 py-0.5 inline-block rounded-full">
-                                        -{percentSale}%
-                                    </div>
-                                )}
+                                
                             </div>
                             <div className="list-action mt-6">
                                 <div className="choose-color mt-5">
@@ -362,6 +355,10 @@ const Default: React.FC<Props> = ({ productId }) => {
                                 <div className="">
                                     <div className="more-infor">
                                     <div className="flex items-center gap-1 mt-3">
+                                        <div className="text-secondary">Wholesale Enquiries? Call or WhatsApp Us at </div>
+                                        <div className="text-title"><Link target='_blank' href="https://wa.me/8801975859249">01975859249</Link></div>
+                                    </div>
+                                    <div className="flex items-center gap-1 mt-3">
                                         <div className="text-title">SKU:</div>
                                         <div className="text-secondary">{productMain.sku}</div>
                                     </div>
@@ -382,7 +379,7 @@ const Default: React.FC<Props> = ({ productId }) => {
                                 <div className='grid md:grid-cols-2 gap-8 gap-y-5'>
                                     <div className="left">
                                         <div className="heading6">Description</div>
-                                        <pre className="text-secondary font-bangla mt-2">
+                                        <pre className="text-secondary text-pretty font-bangla mt-2">
                                         {productMain.description}
                                         </pre>
                                     </div>

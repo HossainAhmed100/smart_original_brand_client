@@ -3,8 +3,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import * as Icon from "@phosphor-icons/react/dist/ssr";
-import TopNavOne from '@/components/Header/TopNav/TopNavOne';
-import MenuOne from '@/components/Header/Menu/MenuOne';
+import MenuFour from '@/components/Header/Menu/MenuFour';
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import Footer from '@/components/Footer/Footer';
 import { useUser } from '@/context/UserContext';
@@ -48,9 +47,8 @@ const MyAccount: React.FC = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
             <div id="header" className='relative w-full'>
-                <MenuOne props="bg-transparent" />
+                <MenuFour props="bg-white" />
                 <Breadcrumb heading='My Account' subHeading='My Account' />
             </div>
             <div className="cart-block md:py-20 py-10">

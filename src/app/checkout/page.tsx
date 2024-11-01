@@ -1,8 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import TopNavOne from '@/components/Header/TopNav/TopNavOne'
-import MenuOne from '@/components/Header/Menu/MenuOne'
+import MenuFour from '@/components/Header/Menu/MenuFour'
 import { useForm } from "react-hook-form";
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
 import Footer from '@/components/Footer/Footer'
@@ -57,6 +56,7 @@ const Checkout = () => {
         const response = await axiosPublic.post('/orders/', info);
         
         if (response.data.phone === phone) {
+          reset()
             router.push("/")
           console.log("Order created successfully:", response.data);
           // You can add success toast here
@@ -76,9 +76,8 @@ const Checkout = () => {
 
 return (
 <>
-<TopNavOne props="style-one" slogan="New customers save 10% with the code GET10" />
 <div id="header" className='relative w-full'>
-<MenuOne props="bg-transparent" />
+<MenuFour props="bg-white" />
 <Breadcrumb heading='Shopping cart' subHeading='Shopping cart' />
 </div>
 <div className="cart-block font-bangla md:py-20 py-10">

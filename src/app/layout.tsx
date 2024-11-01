@@ -4,7 +4,6 @@ import GlobalProvider from './GlobalProvider'
 import ModalWishlist from '@/components/Modal/ModalWishlist'
 import ModalSearch from '@/components/Modal/ModalSearch'
 import ModalQuickview from '@/components/Modal/ModalQuickview'
-import ModalCompare from '@/components/Modal/ModalCompare'
 import CountdownTimeType from '@/type/CountdownType'
 import { countdownTime } from '@/store/countdownTime'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -30,7 +29,6 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
           <ModalWishlist />
           <ModalSearch />
           <ModalQuickview />
-          <ModalCompare />
         </Providers>
       </body>
     </html>

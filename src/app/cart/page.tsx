@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import TopNavOne from '@/components/Header/TopNav/TopNavOne'
-import MenuOne from '@/components/Header/Menu/MenuOne'
+import TopNavThree from '@/components/Header/TopNav/TopNavThree'
+import MenuFour from '@/components/Header/Menu/MenuFour'
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
 import Footer from '@/components/Footer/Footer'
 import * as Icon from "@phosphor-icons/react/dist/ssr";
@@ -72,9 +72,8 @@ const Cart = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
             <div id="header" className='relative w-full'>
-                <MenuOne props="bg-transparent" />
+                <MenuFour props="bg-white" />
                 <Breadcrumb heading='Shopping cart' subHeading='Shopping cart' />
             </div>
             <div className="cart-block md:py-20 py-10">
@@ -315,7 +314,7 @@ const Cart = () => {
                                 </div>
                                 <div className="block-button flex flex-col items-center gap-y-4 mt-5">
                                     <div className="checkout-btn button-main text-center w-full" onClick={redirectToCheckout}>Process To Checkout</div>
-                                    <Link className="text-button hover-underline" href={"/shop/breadcrumb1"}>Continue shopping</Link>
+                                    <Link className="text-button hover-underline" href={"/shop/breadcrumb-img"}>Continue shopping</Link>
                                 </div>
                             </div>
                         </div>

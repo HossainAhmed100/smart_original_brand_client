@@ -3,16 +3,12 @@
 // Quickview.tsx
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ProductType } from '@/type/ProductType';
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { useModalQuickviewContext } from '@/context/ModalQuickviewContext';
 import { useCart } from '@/context/CartContext';
 import { useModalCartContext } from '@/context/ModalCartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useModalWishlistContext } from '@/context/ModalWishlistContext';
-import { useCompare } from '@/context/CompareContext'
-import { useModalCompareContext } from '@/context/ModalCompareContext'
-import Rate from '../Other/Rate';
 import ModalSizeguide from './ModalSizeguide';
 
 const ModalQuickview = () => {
@@ -26,8 +22,6 @@ const ModalQuickview = () => {
     const { openModalCart } = useModalCartContext()
     const { addToWishlist, removeFromWishlist, wishlistState } = useWishlist()
     const { openModalWishlist } = useModalWishlistContext()
-    const { addToCompare, removeFromCompare, compareState } = useCompare();
-    const { openModalCompare } = useModalCompareContext()
     const percentSale = selectedProduct && Math.floor(100 - ((selectedProduct.price / selectedProduct.originPrice) * 100))
 
     const handleOpenSizeGuide = () => {
@@ -86,22 +80,6 @@ const ModalQuickview = () => {
         openModalWishlist();
     };
 
-    const handleAddToCompare = () => {
-        // if product existed in wishlit, remove from wishlist and set state to false
-        if (selectedProduct) {
-            if (compareState.compareArray.length < 3) {
-                if (compareState.compareArray.some(item => item._id === selectedProduct._id)) {
-                    removeFromCompare(selectedProduct._id);
-                } else {
-                    // else, add to wishlist and set state to true
-                    addToCompare(selectedProduct);
-                }
-            } else {
-                alert('Compare up to 3 products')
-            }
-        }
-        openModalCompare();
-    };
 
     return (
         <>

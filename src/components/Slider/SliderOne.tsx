@@ -1,12 +1,15 @@
 'use client'
 
-import React, { Component } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css/bundle';
 import 'swiper/css/effect-fade';
+import Slider1Img from "@/assets/slider/1.png";
+import Slider2Img from "@/assets/slider/2.png";
+import Slider3Img from "@/assets/slider/3.png";
 
 
 const SliderOne = () => {
@@ -35,7 +38,7 @@ const SliderOne = () => {
                                     </div>
                                     <div className="sub-img absolute sm:w-1/2 w-3/5 2xl:-right-[60px] -right-[16px] bottom-0">
                                         <Image
-                                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fbg1-3.png?alt=media&token=dbf84706-7c1b-484c-b4fa-bd725720aa40'}
+                                            src={Slider1Img}
                                             width={670}
                                             height={936}
                                             alt='bg1-1'
@@ -53,9 +56,9 @@ const SliderOne = () => {
                                         <div className="text-display md:mt-5 mt-2">Fashion for Every Occasion</div>
                                         <Link href='/shop/breadcrumb-img' className="button-main md:mt-8 mt-3">Shop Now</Link>
                                     </div>
-                                    <div className="sub-img absolute w-1/2 2xl:-right-[60px] -right-[0] sm:-bottom-[60px] bottom-0">
+                                    <div className="sub-img absolute sm:w-1/2 w-3/5 2xl:-right-[60px] -right-[16px] bottom-0">
                                         <Image
-                                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fbg1-2.png?alt=media&token=0e797158-276b-4581-974a-68b2da5c9ba1'}
+                                            src={Slider2Img}
                                             width={670}
                                             height={936}
                                             alt='bg1-2'
@@ -73,9 +76,9 @@ const SliderOne = () => {
                                         <div className="text-display md:mt-5 mt-2">Stylish Looks for Any Season</div>
                                         <Link href='/shop/breadcrumb-img' className="button-main md:mt-8 mt-3">Shop Now</Link>
                                     </div>
-                                    <div className="sub-img absolute sm:w-1/2 w-2/3 2xl:-right-[60px] -right-[36px] sm:bottom-0 -bottom-[30px]">
+                                    <div className="sub-img absolute sm:w-1/2 w-3/5 2xl:-right-[60px] -right-[16px] bottom-0">
                                         <Image
-                                            src={'https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fbg1-1.png?alt=media&token=947bc5bc-e4e6-4ad1-965f-a9ea0209413e'}
+                                            src={Slider3Img}
                                             width={670}
                                             height={936}
                                             alt='bg1-3'

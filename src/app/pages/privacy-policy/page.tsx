@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import TopNavOne from '@/components/Header/TopNav/TopNavOne'
-import MenuOne from '@/components/Header/Menu/MenuOne'
+import MenuFour from '@/components/Header/Menu/MenuFour'
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import Footer from '@/components/Footer/Footer'
 
@@ -12,9 +11,8 @@ export const metadata = {
 export default function PrivacyPolicyPage() {
     return (
       <>
-      <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
         <div id="header" className='relative w-full'>
-          <MenuOne props="bg-transparent" />
+          <MenuFour props="bg-white" />
           <Breadcrumb heading='Privacy Policy' subHeading='Policy' />
         </div>
       <div className="max-w-4xl font-bangla mx-auto px-4 md:px-6 py-12">

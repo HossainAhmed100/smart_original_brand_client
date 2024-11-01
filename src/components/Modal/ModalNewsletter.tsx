@@ -1,21 +1,19 @@
 'use client'
-
 import { useRouter } from 'next/navigation'
 import React, { useState, useEffect } from 'react'
-import * as Icon from "@phosphor-icons/react/dist/ssr";
+import PopUpBannerUrl from "@/assets/banner/popUpBanner.png";
 import Image from 'next/image';
-
 const ModalNewsletter = () => {
 const [open, setOpen] = useState<boolean>(false)
 const router = useRouter()
+
 const handlePromoOffers = () => {
-  // redirect to shop with category selected
-  router.push(`/shop/breadcrumb1`);
+  router.push(`/shop/breadcrumb-img?collection=winter-collections`);
 };
 
 useEffect(() => {
   setTimeout(() => {
-      setOpen(true)
+    setOpen(true)
   }, 3000)
 }, [])
 
@@ -29,7 +27,7 @@ return (
     <div className="main-content rounded-sm overflow-hidden w-fit">
    
     <div onClick={handlePromoOffers}>
-      <Image height={600} width={600} alt='Popip Promo Banner' src={"https://firebasestorage.googleapis.com/v0/b/smart-original-brand.appspot.com/o/lauoytImages%2Fpromonanner.jpg?alt=media&token=4256a56f-1008-4a46-a989-4323500f8cb9"} />
+      <Image height={600} width={600} priority alt='Popip Promo Banner' src={PopUpBannerUrl} />
     </div>
     </div>
   </div>
